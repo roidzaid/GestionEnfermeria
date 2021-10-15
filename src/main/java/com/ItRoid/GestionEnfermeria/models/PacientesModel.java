@@ -17,13 +17,11 @@ public class PacientesModel {
     private String nombreResponsable;
     private String ApellidoResponsable;
     private int dniResponsable;
-    private int telefono;
-    private String mail;
 
     public PacientesModel() {
     }
 
-    public PacientesModel(Date fechaAlta, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, int telefono, String mail) {
+    public PacientesModel(Date fechaAlta, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable) {
         this.fechaAlta = fechaAlta;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -36,24 +34,6 @@ public class PacientesModel {
         this.nombreResponsable = nombreResponsable;
         ApellidoResponsable = apellidoResponsable;
         this.dniResponsable = dniResponsable;
-        this.telefono = telefono;
-        this.mail = mail;
-    }
-
-    public PacientesModel(String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, int telefono, String mail) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.fechaNac = fechaNac;
-        this.sexo = sexo;
-        this.obraSocial = obraSocial;
-        this.localidad = localidad;
-        this.direccion = direccion;
-        this.nombreResponsable = nombreResponsable;
-        ApellidoResponsable = apellidoResponsable;
-        this.dniResponsable = dniResponsable;
-        this.telefono = telefono;
-        this.mail = mail;
     }
 
     public Date getFechaAlta() {
@@ -152,19 +132,5 @@ public class PacientesModel {
         this.dniResponsable = dniResponsable;
     }
 
-    public int getTelefono() {
-        return telefono;
-    }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
 }

@@ -50,12 +50,6 @@ public class PacientesEntity {
     @Column(name = "dniResponsable")
     private int dniResponsable;
 
-    @Column(name = "telefono")
-    private int telefono;
-
-    @Column(name = "mail")
-    private String mail;
-
     @Column(name = "usuarioModif")
     private String usuarioModif;
 
@@ -65,7 +59,7 @@ public class PacientesEntity {
     public PacientesEntity() {
     }
 
-    public PacientesEntity(Date fechaAlta, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, int telefono, String mail, String usuarioModif, Timestamp timestamp) {
+    public PacientesEntity(Date fechaAlta, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String usuarioModif, Timestamp timestamp) {
         this.fechaAlta = fechaAlta;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -78,8 +72,6 @@ public class PacientesEntity {
         this.nombreResponsable = nombreResponsable;
         this.ApellidoResponsable = apellidoResponsable;
         this.dniResponsable = dniResponsable;
-        this.telefono = telefono;
-        this.mail = mail;
         this.usuarioModif = usuarioModif;
         this.timestamp = timestamp;
     }
@@ -186,22 +178,6 @@ public class PacientesEntity {
 
     public void setDniResponsable(int dniResponsable) {
         this.dniResponsable = dniResponsable;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
     }
 
     public String getUsuarioModif() {

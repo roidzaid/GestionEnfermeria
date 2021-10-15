@@ -49,17 +49,8 @@ public class PracticaEntity {
     @Column(name = "dniResponsable")
     private int dniResponsable;
 
-    @Column(name = "telefono")
-    private int telefono;
-
-    @Column(name = "mail")
-    private String mail;
-
-    @Column(name = "tipoPractica")
-    private String tipoPractica;
-
-    @Column(name = "observacion")
-    private String observacion;
+    @Column(name = "observaciones")
+    private String observaciones;
 
     @Column(name = "vacuna")
     private String vacuna;
@@ -77,7 +68,7 @@ public class PracticaEntity {
     public PracticaEntity() {
     }
 
-    public PracticaEntity(Date fecha, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, int telefono, String mail, String tipoPractica, String observacion, String vacuna, String dosis, String tipoVacuna, String lote) {
+    public PracticaEntity(Date fecha, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote) {
         this.fecha = fecha;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -90,10 +81,7 @@ public class PracticaEntity {
         this.nombreResponsable = nombreResponsable;
         ApellidoResponsable = apellidoResponsable;
         this.dniResponsable = dniResponsable;
-        this.telefono = telefono;
-        this.mail = mail;
-        this.tipoPractica = tipoPractica;
-        this.observacion = observacion;
+        this.observaciones = observaciones;
         this.vacuna = vacuna;
         this.dosis = dosis;
         this.tipoVacuna = tipoVacuna;
@@ -204,36 +192,12 @@ public class PracticaEntity {
         this.dniResponsable = dniResponsable;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public String getObservaciones() {
+        return observaciones;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getTipoPractica() {
-        return tipoPractica;
-    }
-
-    public void setTipoPractica(String tipoPractica) {
-        this.tipoPractica = tipoPractica;
-    }
-
-    public String getObservacion() {
-        return observacion;
-    }
-
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
     public String getVacuna() {

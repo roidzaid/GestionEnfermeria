@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ public class LoteServiceImpl implements LoteService<LoteModel> {
 
         if (loteEntity == null) {
 
-            LoteEntity l = this.loteRepository.findByLoteAbierto(loteModel.getVacuna(), loteModel.getTipo(), "ABIERTO");
+            LoteEntity l = this.loteRepository.findByLoteAbierto(loteModel.getVacuna(), loteModel.getMarca(), "ABIERTO");
 
             if (l != null){
 
@@ -41,7 +42,7 @@ public class LoteServiceImpl implements LoteService<LoteModel> {
             LoteEntity lE = new LoteEntity(
                     Date.from(Instant.now()),
                     loteModel.getVacuna(),
-                    loteModel.getTipo(),
+                    loteModel.getMarca(),
                     loteModel.getLote(),
                     "ABIERTO",
                     "ENFERMERIA",
@@ -64,9 +65,11 @@ public class LoteServiceImpl implements LoteService<LoteModel> {
         if (loteEntity != null) {
 
             LoteModel loteModel = new LoteModel(
+                    new SimpleDateFormat("dd-MM-yyyy").format(loteEntity.getFechaAlta()),
                     loteEntity.getVacuna(),
-                    loteEntity.getTipo(),
-                    loteEntity.getLote()
+                    loteEntity.getMarca(),
+                    loteEntity.getLote(),
+                    loteEntity.getEstado()
             );
 
         return loteModel;
@@ -85,13 +88,15 @@ public class LoteServiceImpl implements LoteService<LoteModel> {
         if (loteEntity != null) {
 
             LoteModel loteModel = new LoteModel(
+                    new SimpleDateFormat("dd-MM-yyyy").format(loteEntity.getFechaAlta()),
                     loteEntity.getVacuna(),
-                    loteEntity.getTipo(),
-                    loteEntity.getLote()
+                    loteEntity.getMarca(),
+                    loteEntity.getLote(),
+                    loteEntity.getEstado()
             );
 
 
-            loteModel.setFechaAlta(loteEntity.getFechaAlta());
+            loteModel.setFechaAlta(new SimpleDateFormat("dd-MM-yyyy").format(loteEntity.getFechaAlta()));
             loteModel.setEstado(loteEntity.getEstado());
 
             return loteModel;
@@ -108,9 +113,11 @@ public class LoteServiceImpl implements LoteService<LoteModel> {
                 .findAll()
                 .stream()
                 .map((e) -> new LoteModel(
+                        new SimpleDateFormat("dd-MM-yyyy").format(e.getFechaAlta()),
                         e.getVacuna(),
-                        e.getTipo(),
-                        e.getLote()))
+                        e.getMarca(),
+                        e.getLote(),
+                        e.getEstado()))
                 .collect(Collectors.toList());
 
         return list;
@@ -126,7 +133,7 @@ public class LoteServiceImpl implements LoteService<LoteModel> {
 
             loteEntity.setFechaAlta(Date.from(Instant.now()));
             loteEntity.setVacuna(loteModel.getVacuna());
-            loteEntity.setTipo(loteModel.getTipo());
+            loteEntity.setMarca(loteModel.getMarca());
             loteEntity.setLote(loteModel.getLote());
             loteEntity.setEstado(loteModel.getEstado());
             loteEntity.setUsuarioModif("AUTOMATICO");

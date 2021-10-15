@@ -17,10 +17,7 @@ public class PracticaModel {
     private String nombreResponsable;
     private String ApellidoResponsable;
     private int dniResponsable;
-    private int telefono;
-    private String mail;
-    private String tipoPractica;
-    private String observacion;
+    private String observaciones;
     private String vacuna;
     private String dosis;
     private String tipoVacuna;
@@ -30,7 +27,7 @@ public class PracticaModel {
     public PracticaModel() {
     }
 
-    public PracticaModel(Long idPractica, Date fecha, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, int telefono, String mail, String tipoPractica, String observacion, String vacuna, String dosis, String tipoVacuna, String lote) {
+    public PracticaModel(Long idPractica, Date fecha, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote) {
         this.idPractica = idPractica;
         this.fecha = fecha;
         this.nombre = nombre;
@@ -42,41 +39,14 @@ public class PracticaModel {
         this.localidad = localidad;
         this.direccion = direccion;
         this.nombreResponsable = nombreResponsable;
-        ApellidoResponsable = apellidoResponsable;
-        this.dniResponsable = dniResponsable;
-        this.telefono = telefono;
-        this.mail = mail;
-        this.tipoPractica = tipoPractica;
-        this.observacion = observacion;
-        this.vacuna = vacuna;
-        this.dosis = dosis;
-        this.tipoVacuna = tipoVacuna;
-        this.lote = lote;
-    }
-
-    public PracticaModel(String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, int telefono, String mail, String tipoPractica, String observacion, String vacuna, String dosis, String tipoVacuna, String lote) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.fechaNac = fechaNac;
-        this.sexo = sexo;
-        this.obraSocial = obraSocial;
-        this.localidad = localidad;
-        this.direccion = direccion;
-        this.nombreResponsable = nombreResponsable;
         this.ApellidoResponsable = apellidoResponsable;
         this.dniResponsable = dniResponsable;
-        this.telefono = telefono;
-        this.mail = mail;
-        this.tipoPractica = tipoPractica;
-        this.observacion = observacion;
+        this.observaciones = observaciones;
         this.vacuna = vacuna;
         this.dosis = dosis;
         this.tipoVacuna = tipoVacuna;
         this.lote = lote;
     }
-
-
 
     public Long getIdPractica() {
         return idPractica;
@@ -182,36 +152,12 @@ public class PracticaModel {
         this.dniResponsable = dniResponsable;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public String getObservaciones() {
+        return observaciones;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getTipoPractica() {
-        return tipoPractica;
-    }
-
-    public void setTipoPractica(String tipoPractica) {
-        this.tipoPractica = tipoPractica;
-    }
-
-    public String getObservacion() {
-        return observacion;
-    }
-
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
     public String getVacuna() {

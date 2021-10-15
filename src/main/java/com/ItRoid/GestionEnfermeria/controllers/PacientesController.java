@@ -1,5 +1,6 @@
 package com.ItRoid.GestionEnfermeria.controllers;
 
+import com.ItRoid.GestionEnfermeria.models.LoteModel;
 import com.ItRoid.GestionEnfermeria.models.PacientesModel;
 import com.ItRoid.GestionEnfermeria.services.PacientesService;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequestMapping("pacientes")
 public class PacientesController {
 
@@ -43,12 +45,19 @@ public class PacientesController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_ENFERMERIA') OR hasRole('ROLE_COORDINACION')")
     @PostMapping()
-    public void createPaciente(@RequestBody PacientesModel pacientesModel) throws Exception  {
+    public ResponseEntity<?> createPaciente(@RequestBody PacientesModel pacientesModel) throws Exception  {
 
-        logger.info("Se da de alta el paciente: " + pacientesModel);
+        logger.info("Se da de alta el paciente: " + pacientesModel.getDni());
 
-        this.pacientesService.createPaciente(pacientesModel);
+        try {
 
+            this.pacientesService.createPaciente(pacientesModel);
+
+            return new ResponseEntity<PacientesModel>(pacientesModel, HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<PacientesModel>(pacientesModel, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        
     }
 
 

@@ -21,7 +21,7 @@ public class LoteEntity {
     private String vacuna;
 
     @Column(name = "tipo")
-    private String tipo;
+    private String marca;
 
     @Column(name = "lote")
     private String lote;
@@ -38,10 +38,10 @@ public class LoteEntity {
     public LoteEntity() {
     }
 
-    public LoteEntity(Date fechaAlta, String vacuna, String tipo, String lote, String estado, String usuarioModif, Timestamp timestamp) {
+    public LoteEntity(Date fechaAlta, String vacuna, String marca, String lote, String estado, String usuarioModif, Timestamp timestamp) {
         this.fechaAlta = fechaAlta;
         this.vacuna = vacuna;
-        this.tipo = tipo;
+        this.marca = marca;
         this.lote = lote;
         this.estado = estado;
         this.usuarioModif = usuarioModif;
@@ -72,12 +72,12 @@ public class LoteEntity {
         this.vacuna = vacuna;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public String getLote() {

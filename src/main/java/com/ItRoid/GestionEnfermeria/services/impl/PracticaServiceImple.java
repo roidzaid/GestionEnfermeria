@@ -1,8 +1,10 @@
 package com.ItRoid.GestionEnfermeria.services.impl;
 
 import com.ItRoid.GestionEnfermeria.entities.PracticaEntity;
+import com.ItRoid.GestionEnfermeria.models.PacientesModel;
 import com.ItRoid.GestionEnfermeria.models.PracticaModel;
 import com.ItRoid.GestionEnfermeria.repositories.PracticasRepository;
+import com.ItRoid.GestionEnfermeria.services.PacientesService;
 import com.ItRoid.GestionEnfermeria.services.PracticaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +22,12 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
     @Autowired
     private PracticasRepository practicasRepository;
 
+    @Autowired
+    private PacientesService pacientesService;
+
 
     @Override
     public void createPractica(PracticaModel practicasModel) throws Exception {
-
-        //PracticaEntity p = this.practicasRepository.findByIdPractica(practicasModel.getIdPractica());
-
-        //if(p == null) {
 
             PracticaEntity practicaEntity = new PracticaEntity(
                     Date.from(Instant.now()),
@@ -41,10 +42,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                     practicasModel.getNombreResponsable(),
                     practicasModel.getApellidoResponsable(),
                     practicasModel.getDniResponsable(),
-                    practicasModel.getTelefono(),
-                    practicasModel.getMail(),
-                    practicasModel.getTipoPractica(),
-                    practicasModel.getObservacion(),
+                    practicasModel.getObservaciones(),
                     practicasModel.getVacuna(),
                     practicasModel.getDosis(),
                     practicasModel.getTipoVacuna(),
@@ -79,10 +77,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                         e.getNombreResponsable(),
                         e.getApellidoResponsable(),
                         e.getDniResponsable(),
-                        e.getTelefono(),
-                        e.getMail(),
-                        e.getTipoPractica(),
-                        e.getObservacion(),
+                        e.getObservaciones(),
                         e.getVacuna(),
                         e.getDosis(),
                         e.getTipoVacuna(),
@@ -113,10 +108,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombreResponsable(),
                             e.getApellidoResponsable(),
                             e.getDniResponsable(),
-                            e.getTelefono(),
-                            e.getMail(),
-                            e.getTipoPractica(),
-                            e.getObservacion(),
+                            e.getObservaciones(),
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
@@ -162,10 +154,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombreResponsable(),
                             e.getApellidoResponsable(),
                             e.getDniResponsable(),
-                            e.getTelefono(),
-                            e.getMail(),
-                            e.getTipoPractica(),
-                            e.getObservacion(),
+                            e.getObservaciones(),
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
@@ -205,10 +194,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombreResponsable(),
                             e.getApellidoResponsable(),
                             e.getDniResponsable(),
-                            e.getTelefono(),
-                            e.getMail(),
-                            e.getTipoPractica(),
-                            e.getObservacion(),
+                            e.getObservaciones(),
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
@@ -248,10 +234,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombreResponsable(),
                             e.getApellidoResponsable(),
                             e.getDniResponsable(),
-                            e.getTelefono(),
-                            e.getMail(),
-                            e.getTipoPractica(),
-                            e.getObservacion(),
+                            e.getObservaciones(),
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
@@ -297,10 +280,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombreResponsable(),
                             e.getApellidoResponsable(),
                             e.getDniResponsable(),
-                            e.getTelefono(),
-                            e.getMail(),
-                            e.getTipoPractica(),
-                            e.getObservacion(),
+                            e.getObservaciones(),
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
@@ -338,10 +318,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombreResponsable(),
                             e.getApellidoResponsable(),
                             e.getDniResponsable(),
-                            e.getTelefono(),
-                            e.getMail(),
-                            e.getTipoPractica(),
-                            e.getObservacion(),
+                            e.getObservaciones(),
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
@@ -387,10 +364,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombreResponsable(),
                             e.getApellidoResponsable(),
                             e.getDniResponsable(),
-                            e.getTelefono(),
-                            e.getMail(),
-                            e.getTipoPractica(),
-                            e.getObservacion(),
+                            e.getObservaciones(),
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
@@ -434,10 +408,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombreResponsable(),
                             e.getApellidoResponsable(),
                             e.getDniResponsable(),
-                            e.getTelefono(),
-                            e.getMail(),
-                            e.getTipoPractica(),
-                            e.getObservacion(),
+                            e.getObservaciones(),
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
@@ -470,10 +441,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                 p.setNombreResponsable(practicasModel.getNombreResponsable());
                 p.setApellidoResponsable(practicasModel.getApellidoResponsable());
                 p.setDniResponsable(practicasModel.getDniResponsable());
-                p.setTelefono(practicasModel.getTelefono());
-                p.setMail(practicasModel.getMail());
-                p.setTipoPractica(practicasModel.getTipoPractica());
-                p.setObservacion(practicasModel.getObservacion());
+                p.setObservaciones(practicasModel.getObservaciones());
                 p.setVacuna(practicasModel.getVacuna());
                 p.setDosis(practicasModel.getDosis());
                 p.setTipoVacuna(practicasModel.getTipoVacuna());

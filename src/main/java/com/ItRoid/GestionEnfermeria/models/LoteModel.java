@@ -1,13 +1,11 @@
 package com.ItRoid.GestionEnfermeria.models;
 
-import java.util.Date;
-
 public class LoteModel {
 
 
-    private Date fechaAlta;
+    private String fechaAlta;
     private String vacuna;
-    private String tipo;
+    private String marca;
     private String lote;
     private String estado;
 
@@ -15,17 +13,19 @@ public class LoteModel {
     public LoteModel() {
     }
 
-    public LoteModel(String vacuna, String tipo, String lote) {
+    public LoteModel(String fechaAlta, String vacuna, String tipo, String lote, String estado) {
+        this.fechaAlta = fechaAlta;
         this.vacuna = vacuna;
-        this.tipo = tipo;
+        this.marca = tipo;
         this.lote = lote;
+        this.estado = estado;
     }
 
-    public Date getFechaAlta() {
+    public String getFechaAlta() {
         return fechaAlta;
     }
 
-    public void setFechaAlta(Date fechaAlta) {
+    public void setFechaAlta(String fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
 
@@ -37,12 +37,12 @@ public class LoteModel {
         this.vacuna = vacuna;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public String getLote() {

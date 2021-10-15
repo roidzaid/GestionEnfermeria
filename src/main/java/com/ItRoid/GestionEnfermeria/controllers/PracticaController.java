@@ -1,5 +1,6 @@
 package com.ItRoid.GestionEnfermeria.controllers;
 
+import com.ItRoid.GestionEnfermeria.models.PacientesModel;
 import com.ItRoid.GestionEnfermeria.models.PracticaModel;
 import com.ItRoid.GestionEnfermeria.services.PracticaService;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequestMapping("practicas")
 public class PracticaController {
 
@@ -24,11 +26,17 @@ public class PracticaController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_ENFERMERIA') OR hasRole('ROLE_COORDINACION')")
     @PostMapping()
-    public void createPractica(@RequestBody PracticaModel practicaModel) throws Exception  {
+    public ResponseEntity<?> createPractica(@RequestBody PracticaModel practicaModel) throws Exception  {
 
         logger.info("Se da de alta practica para: " + practicaModel.getDni());
 
-        this.practicaService.createPractica(practicaModel);
+        try {
+            this.practicaService.createPractica(practicaModel);
+
+            return new ResponseEntity<PracticaModel>(practicaModel, HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
     }
 

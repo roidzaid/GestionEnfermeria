@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -39,8 +40,6 @@ public class PacientesServiceImpl implements PacientesService<PacientesModel> {
                     paciente.getNombreResponsable(),
                     paciente.getApellidoResponsable(),
                     paciente.getDniResponsable(),
-                    paciente.getTelefono(),
-                    paciente.getMail(),
                     "PRIMER ALTA",
                     Timestamp.from(Instant.now())
 
@@ -75,9 +74,7 @@ public class PacientesServiceImpl implements PacientesService<PacientesModel> {
                     pacientesEntity.getDireccion(),
                     pacientesEntity.getNombreResponsable(),
                     pacientesEntity.getApellidoResponsable(),
-                    pacientesEntity.getDniResponsable(),
-                    pacientesEntity.getTelefono(),
-                    pacientesEntity.getMail());
+                    pacientesEntity.getDniResponsable());
 
             return pacientesModel;
 
@@ -105,9 +102,7 @@ public class PacientesServiceImpl implements PacientesService<PacientesModel> {
                         e.getDireccion(),
                         e.getNombreResponsable(),
                         e.getApellidoResponsable(),
-                        e.getDniResponsable(),
-                        e.getTelefono(),
-                        e.getMail()))
+                        e.getDniResponsable()))
                 .collect(Collectors.toList());
 
         return list;
@@ -132,8 +127,6 @@ public class PacientesServiceImpl implements PacientesService<PacientesModel> {
             pacientesEntity.setNombreResponsable(paciente.getNombreResponsable());
             pacientesEntity.setApellidoResponsable(paciente.getApellidoResponsable());
             pacientesEntity.setDniResponsable(paciente.getDniResponsable());
-            pacientesEntity.setTelefono(paciente.getTelefono());
-            pacientesEntity.setMail(paciente.getMail());
             pacientesEntity.setUsuarioModif("MODIFICADO");
             pacientesEntity.setTimestamp(Timestamp.from(Instant.now()));
 
