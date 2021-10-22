@@ -22,6 +22,8 @@ public interface PracticaService <T>{
 
     List<PracticaModel> findPracticasXFecha(String fechaDesde, String fechaHasta) throws Exception;
 
+    List<PracticaModel> findPracticasXUsuario(String usuario) throws Exception;
+
 
     void updatePractica(PracticaModel practicasModel) throws Exception;
     void deletePractica(Long idPractica) throws Exception;

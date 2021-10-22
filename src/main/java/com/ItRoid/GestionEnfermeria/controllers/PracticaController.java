@@ -127,6 +127,17 @@ public class PracticaController {
         return new ResponseEntity<List<PracticaModel>>(this.practicaService.findPracticasXFecha(fechaDesde, fechaHasta), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_ENFERMERIA') OR hasRole('ROLE_COORDINACION')")
+    @GetMapping("/usuario/{usuario}")
+    public ResponseEntity<?> findPracticasXusuario( @PathVariable("usuario")String usuario) throws Exception{
+
+        logger.info("Se listan todas las practicas de " + usuario);
+
+        return new ResponseEntity<List<PracticaModel>>(this.practicaService.findPracticasXUsuario(usuario), HttpStatus.OK);
+    }
+
+
+
     @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_COORDINACION')")
     @PutMapping()
     public void updatePractica(@RequestBody PracticaModel practicaModel) throws Exception {

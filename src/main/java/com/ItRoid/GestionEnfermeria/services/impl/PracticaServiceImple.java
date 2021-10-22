@@ -9,11 +9,13 @@ import com.ItRoid.GestionEnfermeria.services.PracticaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,12 +31,19 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
     @Override
     public void createPractica(PracticaModel practicasModel) throws Exception {
 
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate fechaNac = LocalDate.parse(practicasModel.getFechaNac(), fmt);
+        LocalDate ahora = LocalDate.now();
+
+        Period periodo = Period.between(fechaNac, ahora);
+
             PracticaEntity practicaEntity = new PracticaEntity(
                     Date.from(Instant.now()),
                     practicasModel.getNombre(),
                     practicasModel.getApellido(),
                     practicasModel.getDni(),
                     practicasModel.getFechaNac(),
+                    periodo.getYears(),
                     practicasModel.getSexo(),
                     practicasModel.getObraSocial(),
                     practicasModel.getLocalidad(),
@@ -46,7 +55,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                     practicasModel.getVacuna(),
                     practicasModel.getDosis(),
                     practicasModel.getTipoVacuna(),
-                    practicasModel.getLote());
+                    practicasModel.getLote(),
+                    practicasModel.getUsuarioModif(),
+                    Timestamp.from(Instant.now()));
 
             this.practicasRepository.save(practicaEntity);
 
@@ -420,6 +431,44 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
             throw new Exception("No se han realizado practicas en las fechas indicadas");
 
         }
+    }
+
+    @Override
+    public List<PracticaModel> findPracticasXUsuario(String usuario) throws Exception {
+
+        List<PracticaModel> lista = null;
+
+        List<PracticaEntity> listEntity = this.practicasRepository.findByXUsuario(Date.from(Instant.now()), usuario);
+
+        if(listEntity != null) {
+            List<PracticaModel> list = listEntity
+                    .stream()
+                    .map((e) -> new PracticaModel(
+                            e.getIdPractica(),
+                            e.getFecha(),
+                            e.getNombre(),
+                            e.getApellido(),
+                            e.getDni(),
+                            e.getFechaNac(),
+                            e.getSexo(),
+                            e.getObraSocial(),
+                            e.getLocalidad(),
+                            e.getDireccion(),
+                            e.getNombreResponsable(),
+                            e.getApellidoResponsable(),
+                            e.getDniResponsable(),
+                            e.getObservaciones(),
+                            e.getVacuna(),
+                            e.getDosis(),
+                            e.getTipoVacuna(),
+                            e.getLote()))
+                    .collect(Collectors.toList());
+
+            lista = list;
+        }
+
+
+        return lista;
     }
 
     @Override

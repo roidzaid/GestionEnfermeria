@@ -45,7 +45,7 @@ public class LoteServiceImpl implements LoteService<LoteModel> {
                     loteModel.getMarca(),
                     loteModel.getLote(),
                     "ABIERTO",
-                    "ENFERMERIA",
+                    loteModel.getUsuarioModif(),
                     Timestamp.from(Instant.now())
             );
 

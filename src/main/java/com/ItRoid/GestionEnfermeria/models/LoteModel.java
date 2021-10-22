@@ -8,6 +8,7 @@ public class LoteModel {
     private String marca;
     private String lote;
     private String estado;
+    private String usuarioModif;
 
 
     public LoteModel() {
@@ -19,6 +20,7 @@ public class LoteModel {
         this.marca = tipo;
         this.lote = lote;
         this.estado = estado;
+        this.usuarioModif = usuarioModif;
     }
 
     public String getFechaAlta() {
@@ -59,5 +61,13 @@ public class LoteModel {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getUsuarioModif() {
+        return usuarioModif;
+    }
+
+    public void setUsuarioModif(String usuarioModif) {
+        this.usuarioModif = usuarioModif;
     }
 }

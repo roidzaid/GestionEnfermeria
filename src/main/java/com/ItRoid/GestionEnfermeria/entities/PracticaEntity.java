@@ -1,6 +1,7 @@
 package com.ItRoid.GestionEnfermeria.entities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -27,6 +28,9 @@ public class PracticaEntity {
 
     @Column(name = "fechaNac")
     private String fechaNac;
+
+    @Column(name = "edad")
+    private int edad;
 
     @Column(name = "sexo")
     private String sexo;
@@ -64,16 +68,22 @@ public class PracticaEntity {
     @Column(name = "lote")
     private String lote;
 
+    @Column(name = "usuarioModif")
+    private String usuarioModif;
+
+    @Column(name = "timestamp")
+    private Timestamp timestamp;
 
     public PracticaEntity() {
     }
 
-    public PracticaEntity(Date fecha, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote) {
+    public PracticaEntity(Date fecha, String nombre, String apellido, int dni, String fechaNac, int edad, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote, String usuarioModif, Timestamp timestamp) {
         this.fecha = fecha;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaNac = fechaNac;
+        this.edad = edad;
         this.sexo = sexo;
         this.obraSocial = obraSocial;
         this.localidad = localidad;
@@ -86,6 +96,9 @@ public class PracticaEntity {
         this.dosis = dosis;
         this.tipoVacuna = tipoVacuna;
         this.lote = lote;
+        this.usuarioModif = usuarioModif;
+        this.timestamp = timestamp;
+
     }
 
     public Long getIdPractica() {
@@ -230,5 +243,29 @@ public class PracticaEntity {
 
     public void setLote(String lote) {
         this.lote = lote;
+    }
+
+    public String getUsuarioModif() {
+        return usuarioModif;
+    }
+
+    public void setUsuarioModif(String usuarioModif) {
+        this.usuarioModif = usuarioModif;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 }

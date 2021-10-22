@@ -40,7 +40,7 @@ public class PacientesServiceImpl implements PacientesService<PacientesModel> {
                     paciente.getNombreResponsable(),
                     paciente.getApellidoResponsable(),
                     paciente.getDniResponsable(),
-                    "PRIMER ALTA",
+                    paciente.getUsuarioModif(),
                     Timestamp.from(Instant.now())
 
             );

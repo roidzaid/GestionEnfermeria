@@ -22,6 +22,7 @@ public class PracticaModel {
     private String dosis;
     private String tipoVacuna;
     private String lote;
+    private String usuarioModif;
 
 
     public PracticaModel() {
@@ -46,6 +47,7 @@ public class PracticaModel {
         this.dosis = dosis;
         this.tipoVacuna = tipoVacuna;
         this.lote = lote;
+        this.usuarioModif = usuarioModif;
     }
 
     public Long getIdPractica() {
@@ -190,5 +192,13 @@ public class PracticaModel {
 
     public void setLote(String lote) {
         this.lote = lote;
+    }
+
+    public String getUsuarioModif() {
+        return usuarioModif;
+    }
+
+    public void setUsuarioModif(String usuarioModif) {
+        this.usuarioModif = usuarioModif;
     }
 }

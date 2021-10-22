@@ -53,4 +53,26 @@ public interface PracticasRepository extends JpaRepository<PracticaEntity, Long>
             nativeQuery = true)
     List<PracticaEntity> findByXFecha(Date fechaDesde, Date fechaHasta);
 
+    @Query(
+            value = "SELECT * FROM practicas p WHERE p.fecha <= ?1 AND p.usuario_modif = ?2 ORDER BY p.id_practica",
+            nativeQuery = true)
+    List<PracticaEntity> findByXUsuario(Date fecha, String usuarioModif);
+
+    @Query(
+            value = "SELECT count(*) FROM practicas p WHERE p.localidad = ?1 AND TO_CHAR(fecha,'YYYY-MM')= ?2",
+            nativeQuery = true)
+    int countByLocalidad(String localidad, String anioMes);
+
+    @Query(
+            value = "SELECT count(*) FROM practicas p WHERE p.obra_social = ?1 AND TO_CHAR(fecha,'YYYY-MM')= ?2",
+            nativeQuery = true)
+    int countByOS(String obra_social, String anioMes);
+
+    @Query(
+            value = "SELECT count(*) FROM practicas p WHERE p.edad >= ?1 AND p.edad <= ?2 AND p.sexo = ?3  AND TO_CHAR(fecha,'YYYY-MM')= ?4",
+            nativeQuery = true)
+    int countByEdad(int edadMin, int edadMax, String sexo, String anioMes);
+
+
+
 }

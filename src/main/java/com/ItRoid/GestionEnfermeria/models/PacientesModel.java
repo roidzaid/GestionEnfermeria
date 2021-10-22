@@ -17,6 +17,7 @@ public class PacientesModel {
     private String nombreResponsable;
     private String ApellidoResponsable;
     private int dniResponsable;
+    private String usuarioModif;
 
     public PacientesModel() {
     }
@@ -32,8 +33,9 @@ public class PacientesModel {
         this.localidad = localidad;
         this.direccion = direccion;
         this.nombreResponsable = nombreResponsable;
-        ApellidoResponsable = apellidoResponsable;
+        this.ApellidoResponsable = apellidoResponsable;
         this.dniResponsable = dniResponsable;
+        this.usuarioModif = usuarioModif;
     }
 
     public Date getFechaAlta() {
@@ -132,5 +134,11 @@ public class PacientesModel {
         this.dniResponsable = dniResponsable;
     }
 
+    public String getUsuarioModif() {
+        return usuarioModif;
+    }
 
+    public void setUsuarioModif(String usuarioModif) {
+        this.usuarioModif = usuarioModif;
+    }
 }
