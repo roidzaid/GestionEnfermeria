@@ -37,6 +37,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
 
         Period periodo = Period.between(fechaNac, ahora);
 
+        int meses = (periodo.getYears() * 12) + periodo.getMonths();
+
             PracticaEntity practicaEntity = new PracticaEntity(
                     Date.from(Instant.now()),
                     practicasModel.getNombre(),
@@ -44,6 +46,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                     practicasModel.getDni(),
                     practicasModel.getFechaNac(),
                     periodo.getYears(),
+                    meses,
                     practicasModel.getSexo(),
                     practicasModel.getObraSocial(),
                     practicasModel.getLocalidad(),

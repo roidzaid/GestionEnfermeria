@@ -12,7 +12,7 @@ import java.util.List;
 public interface VacunaRepository extends JpaRepository<VacunaEntity, Long> {
 
     @Query(
-            value = "SELECT v.vacuna FROM vacunas v group by v.vacuna",
+            value = "SELECT v.vacuna FROM vacunas v group by v.vacuna ORDER BY v.vacuna",
             nativeQuery = true)
     List<String> findVacunas();
 

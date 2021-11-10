@@ -29,8 +29,11 @@ public class PracticaEntity {
     @Column(name = "fechaNac")
     private String fechaNac;
 
-    @Column(name = "edad")
-    private int edad;
+    @Column(name = "edadAños")
+    private int edadAños;
+
+    @Column(name = "edadMeses")
+    private int edadMeses;
 
     @Column(name = "sexo")
     private String sexo;
@@ -77,13 +80,14 @@ public class PracticaEntity {
     public PracticaEntity() {
     }
 
-    public PracticaEntity(Date fecha, String nombre, String apellido, int dni, String fechaNac, int edad, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote, String usuarioModif, Timestamp timestamp) {
+    public PracticaEntity(Date fecha, String nombre, String apellido, int dni, String fechaNac, int edadAños, int edadMeses, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote, String usuarioModif, Timestamp timestamp) {
         this.fecha = fecha;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaNac = fechaNac;
-        this.edad = edad;
+        this.edadAños = edadAños;
+        this.edadMeses = edadMeses;
         this.sexo = sexo;
         this.obraSocial = obraSocial;
         this.localidad = localidad;
@@ -261,11 +265,19 @@ public class PracticaEntity {
         this.timestamp = timestamp;
     }
 
-    public int getEdad() {
-        return edad;
+    public int getEdadAños() {
+        return edadAños;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setEdadAños(int edadAños) {
+        this.edadAños = edadAños;
+    }
+
+    public int getEdadMeses() {
+        return edadMeses;
+    }
+
+    public void setEdadMeses(int edadMeses) {
+        this.edadMeses = edadMeses;
     }
 }
