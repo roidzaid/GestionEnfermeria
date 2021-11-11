@@ -70,7 +70,7 @@ public class UsuarioController {
 
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{usuario}")
     public UsuarioModel findUsuario(@PathVariable("usuario") String usuario) throws Exception{
 
