@@ -23,12 +23,13 @@ public class PracticaModel {
     private String tipoVacuna;
     private String lote;
     private String usuarioModif;
+    private String esqAtrazado;
 
 
     public PracticaModel() {
     }
 
-    public PracticaModel(Long idPractica, Date fecha, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote) {
+    public PracticaModel(Long idPractica, Date fecha, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote, String usuarioModif, String esqAtrazado) {
         this.idPractica = idPractica;
         this.fecha = fecha;
         this.nombre = nombre;
@@ -40,7 +41,7 @@ public class PracticaModel {
         this.localidad = localidad;
         this.direccion = direccion;
         this.nombreResponsable = nombreResponsable;
-        this.ApellidoResponsable = apellidoResponsable;
+        ApellidoResponsable = apellidoResponsable;
         this.dniResponsable = dniResponsable;
         this.observaciones = observaciones;
         this.vacuna = vacuna;
@@ -48,6 +49,7 @@ public class PracticaModel {
         this.tipoVacuna = tipoVacuna;
         this.lote = lote;
         this.usuarioModif = usuarioModif;
+        this.esqAtrazado = esqAtrazado;
     }
 
     public Long getIdPractica() {
@@ -200,5 +202,13 @@ public class PracticaModel {
 
     public void setUsuarioModif(String usuarioModif) {
         this.usuarioModif = usuarioModif;
+    }
+
+    public String getEsqAtrazado() {
+        return esqAtrazado;
+    }
+
+    public void setEsqAtrazado(String esqAtrazado) {
+        this.esqAtrazado = esqAtrazado;
     }
 }

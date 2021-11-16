@@ -60,7 +60,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                     practicasModel.getTipoVacuna(),
                     practicasModel.getLote(),
                     practicasModel.getUsuarioModif(),
-                    Timestamp.from(Instant.now()));
+                    Timestamp.from(Instant.now()),
+                    practicasModel.getEsqAtrazado());
 
             this.practicasRepository.save(practicaEntity);
 
@@ -95,7 +96,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                         e.getVacuna(),
                         e.getDosis(),
                         e.getTipoVacuna(),
-                        e.getLote()))
+                        e.getLote(),
+                        e.getUsuarioModif(),
+                        e.getEsqAtrazado()))
                 .collect(Collectors.toList());
 
         return list;
@@ -126,7 +129,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
-                            e.getLote()
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrazado()
             );
 
             return practicaModel;
@@ -172,7 +177,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
-                            e.getLote()))
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrazado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -212,7 +219,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
-                            e.getLote()))
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrazado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -252,7 +261,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
-                            e.getLote()))
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrazado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -298,7 +309,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
-                            e.getLote()))
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrazado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -336,7 +349,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
-                            e.getLote()))
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrazado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -382,7 +397,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
-                            e.getLote()))
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrazado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -426,7 +443,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
-                            e.getLote()))
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrazado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -439,9 +458,16 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
     @Override
     public List<PracticaModel> findPracticasXUsuario(String usuario) throws Exception {
 
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        Date fecha = cal.getTime();
+
         List<PracticaModel> lista = null;
 
-        List<PracticaEntity> listEntity = this.practicasRepository.findByXUsuario(Date.from(Instant.now()), usuario);
+        List<PracticaEntity> listEntity = this.practicasRepository.findByXUsuario(fecha, usuario);
 
         if(listEntity != null) {
             List<PracticaModel> list = listEntity
@@ -464,7 +490,9 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getVacuna(),
                             e.getDosis(),
                             e.getTipoVacuna(),
-                            e.getLote()))
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrazado()))
                     .collect(Collectors.toList());
 
             lista = list;

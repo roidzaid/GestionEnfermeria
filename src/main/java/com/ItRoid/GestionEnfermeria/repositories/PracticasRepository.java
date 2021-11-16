@@ -54,7 +54,7 @@ public interface PracticasRepository extends JpaRepository<PracticaEntity, Long>
     List<PracticaEntity> findByXFecha(Date fechaDesde, Date fechaHasta);
 
     @Query(
-            value = "SELECT * FROM practicas p WHERE p.fecha <= ?1 AND p.usuario_modif = ?2 ORDER BY p.id_practica",
+            value = "SELECT * FROM practicas p WHERE p.fecha >= ?1 AND p.usuario_modif = ?2 ORDER BY p.id_practica",
             nativeQuery = true)
     List<PracticaEntity> findByXUsuario(Date fecha, String usuarioModif);
 
@@ -64,7 +64,7 @@ public interface PracticasRepository extends JpaRepository<PracticaEntity, Long>
     int countByLocalidad(String localidad, String anioMes);
 
     @Query(
-            value = "SELECT count(*) FROM practicas p WHERE p.obra_social = ?1 AND TO_CHAR(fecha,'YYYY-MM')= ?2",
+                value = "SELECT count(*) FROM practicas p WHERE p.obra_social = ?1 AND TO_CHAR(fecha,'YYYY-MM')= ?2",
             nativeQuery = true)
     int countByOS(String obra_social, String anioMes);
 
@@ -75,43 +75,43 @@ public interface PracticasRepository extends JpaRepository<PracticaEntity, Long>
 
 
     @Query(
-            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_meses <= ?3  AND TO_CHAR(fecha,'YYYY-MM')= ?4",
+            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_meses <= ?3  AND TO_CHAR(fecha,'YYYY-MM')= ?4 AND p.esq_atrazado <> ?5",
             nativeQuery = true)
-    int countByVDMIM(String vacuna, String dosis, int edadMeses, String anioMes);
+    int countByVDMIM(String vacuna, String dosis, int edadMeses, String anioMes, String EsqAtrazado);
 
     @Query(
-            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_meses >= ?3  AND p.edad_meses <= ?4 AND TO_CHAR(fecha,'YYYY-MM')= ?5",
+            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_meses >= ?3  AND p.edad_meses <= ?4 AND TO_CHAR(fecha,'YYYY-MM')= ?5 AND p.esq_atrazado <> ?6",
             nativeQuery = true)
-    int countByVDEM(String vacuna, String dosis, int edadMesesDesde, int edadMesesHasta, String anioMes);
+    int countByVDEM(String vacuna, String dosis, int edadMesesDesde, int edadMesesHasta, String anioMes, String EsqAtrazado);
 
     @Query(
-            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_meses = ?3  AND TO_CHAR(fecha,'YYYY-MM')= ?4",
+            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_meses = ?3  AND TO_CHAR(fecha,'YYYY-MM')= ?4 AND p.esq_atrazado <> ?5",
             nativeQuery = true)
-    int countByVDIM(String vacuna, String dosis, int edadMeses, String anioMes);
+    int countByVDIM(String vacuna, String dosis, int edadMeses, String anioMes, String EsqAtrazado);
 
     @Query(
-            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_años >= ?3  AND p.edad_años <= ?4 AND TO_CHAR(fecha,'YYYY-MM')= ?5",
+            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_años >= ?3  AND p.edad_años <= ?4 AND TO_CHAR(fecha,'YYYY-MM')= ?5 AND p.esq_atrazado <> ?6",
             nativeQuery = true)
-    int countByVDEA(String vacuna, String dosis, int edadAñosDesde, int edadAñosHasta, String anioMes);
+    int countByVDEA(String vacuna, String dosis, int edadAñosDesde, int edadAñosHasta, String anioMes, String EsqAtrazado);
 
     @Query(
-            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.sexo = ?3 AND TO_CHAR(fecha,'YYYY-MM')= ?4",
+            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.sexo = ?3 AND TO_CHAR(fecha,'YYYY-MM')= ?4 AND p.esq_atrazado <> ?5",
             nativeQuery = true)
-    int countByVDS(String vacuna, String dosis, String sexo, String anioMes);
+    int countByVDS(String vacuna, String dosis, String sexo, String anioMes, String EsqAtrazado);
 
     @Query(
-            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND TO_CHAR(fecha,'YYYY-MM')= ?3",
+            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND TO_CHAR(fecha,'YYYY-MM')= ?3 AND p.esq_atrazado <> ?4",
             nativeQuery = true)
-    int countByVD(String vacuna, String dosis, String anioMes);
+    int countByVD(String vacuna, String dosis, String anioMes, String EsqAtrazado);
 
     @Query(
-            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.edad_años >= ?2  AND p.edad_años <= ?3 AND TO_CHAR(fecha,'YYYY-MM')= ?4",
+            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.edad_años >= ?2  AND p.edad_años <= ?3 AND TO_CHAR(fecha,'YYYY-MM')= ?4 AND p.esq_atrazado <> ?5",
             nativeQuery = true)
-    int countByVA(String vacuna, int edadAñosDesde, int edadAñosHasta, String anioMes);
+    int countByVA(String vacuna, int edadAñosDesde, int edadAñosHasta, String anioMes, String EsqAtrazado);
 
     @Query(
-            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_años >= ?3 AND TO_CHAR(fecha,'YYYY-MM')= ?4",
+            value = "SELECT count(*) FROM practicas p WHERE p.vacuna = ?1 AND p.dosis = ?2 AND p.edad_años >= ?3 AND TO_CHAR(fecha,'YYYY-MM')= ?4 AND p.esq_atrazado <> ?5",
             nativeQuery = true)
-    int countByVDMA(String vacuna, String dosis, int edadAños, String anioMes);
+    int countByVDMA(String vacuna, String dosis, int edadAños, String anioMes, String EsqAtrazado);
 
 }
