@@ -1,7 +1,6 @@
 package com.ItRoid.GestionEnfermeria.services.impl;
 
 import com.ItRoid.GestionEnfermeria.entities.PracticaEntity;
-import com.ItRoid.GestionEnfermeria.models.PacientesModel;
 import com.ItRoid.GestionEnfermeria.models.PracticaModel;
 import com.ItRoid.GestionEnfermeria.repositories.PracticasRepository;
 import com.ItRoid.GestionEnfermeria.services.PacientesService;
@@ -61,7 +60,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                     practicasModel.getLote(),
                     practicasModel.getUsuarioModif(),
                     Timestamp.from(Instant.now()),
-                    practicasModel.getEsqAtrazado());
+                    practicasModel.getEsqAtrasado());
 
             this.practicasRepository.save(practicaEntity);
 
@@ -98,7 +97,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                         e.getTipoVacuna(),
                         e.getLote(),
                         e.getUsuarioModif(),
-                        e.getEsqAtrazado()))
+                        e.getEsqAtrasado()))
                 .collect(Collectors.toList());
 
         return list;
@@ -131,7 +130,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getTipoVacuna(),
                             e.getLote(),
                             e.getUsuarioModif(),
-                            e.getEsqAtrazado()
+                            e.getEsqAtrasado()
             );
 
             return practicaModel;
@@ -179,7 +178,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getTipoVacuna(),
                             e.getLote(),
                             e.getUsuarioModif(),
-                            e.getEsqAtrazado()))
+                            e.getEsqAtrasado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -221,7 +220,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getTipoVacuna(),
                             e.getLote(),
                             e.getUsuarioModif(),
-                            e.getEsqAtrazado()))
+                            e.getEsqAtrasado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -263,7 +262,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getTipoVacuna(),
                             e.getLote(),
                             e.getUsuarioModif(),
-                            e.getEsqAtrazado()))
+                            e.getEsqAtrasado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -311,7 +310,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getTipoVacuna(),
                             e.getLote(),
                             e.getUsuarioModif(),
-                            e.getEsqAtrazado()))
+                            e.getEsqAtrasado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -351,7 +350,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getTipoVacuna(),
                             e.getLote(),
                             e.getUsuarioModif(),
-                            e.getEsqAtrazado()))
+                            e.getEsqAtrasado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -399,7 +398,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getTipoVacuna(),
                             e.getLote(),
                             e.getUsuarioModif(),
-                            e.getEsqAtrazado()))
+                            e.getEsqAtrasado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -445,7 +444,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getTipoVacuna(),
                             e.getLote(),
                             e.getUsuarioModif(),
-                            e.getEsqAtrazado()))
+                            e.getEsqAtrasado()))
                     .collect(Collectors.toList());
 
             return list;
@@ -492,7 +491,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getTipoVacuna(),
                             e.getLote(),
                             e.getUsuarioModif(),
-                            e.getEsqAtrazado()))
+                            e.getEsqAtrasado()))
                     .collect(Collectors.toList());
 
             lista = list;

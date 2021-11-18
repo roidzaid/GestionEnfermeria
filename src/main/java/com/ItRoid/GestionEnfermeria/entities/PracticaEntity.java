@@ -78,12 +78,12 @@ public class PracticaEntity {
     private Timestamp timestamp;
 
     @Column(name = "esqAtrazado")
-    private String esqAtrazado;
+    private String esqAtrasado;
 
     public PracticaEntity() {
     }
 
-    public PracticaEntity(Date fecha, String nombre, String apellido, int dni, String fechaNac, int edadAños, int edadMeses, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote, String usuarioModif, Timestamp timestamp, String esqAtrazado) {
+    public PracticaEntity(Date fecha, String nombre, String apellido, int dni, String fechaNac, int edadAños, int edadMeses, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote, String usuarioModif, Timestamp timestamp, String esqAtrasado) {
         this.fecha = fecha;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -105,7 +105,7 @@ public class PracticaEntity {
         this.lote = lote;
         this.usuarioModif = usuarioModif;
         this.timestamp = timestamp;
-        this.esqAtrazado = esqAtrazado;
+        this.esqAtrasado = esqAtrasado;
     }
 
     public Long getIdPractica() {
@@ -284,11 +284,11 @@ public class PracticaEntity {
         this.edadMeses = edadMeses;
     }
 
-    public String getEsqAtrazado() {
-        return esqAtrazado;
+    public String getEsqAtrasado() {
+        return esqAtrasado;
     }
 
-    public void setEsqAtrazado(String esqAtrazado) {
-        this.esqAtrazado = esqAtrazado;
+    public void setEsqAtrasado(String esqAtrasado) {
+        this.esqAtrasado = esqAtrasado;
     }
 }
