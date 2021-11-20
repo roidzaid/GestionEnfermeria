@@ -61,6 +61,7 @@ public class UsuarioController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/rol")
     public void createRol(@RequestBody RolModel rol) throws Exception  {
 
@@ -70,7 +71,7 @@ public class UsuarioController {
 
     }
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{usuario}")
     public UsuarioModel findUsuario(@PathVariable("usuario") String usuario) throws Exception{
 

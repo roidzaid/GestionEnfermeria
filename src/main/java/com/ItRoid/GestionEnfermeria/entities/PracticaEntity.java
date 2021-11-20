@@ -77,7 +77,7 @@ public class PracticaEntity {
     @Column(name = "timestamp")
     private Timestamp timestamp;
 
-    @Column(name = "esqAtrazado")
+    @Column(name = "esqAtrasado")
     private String esqAtrasado;
 
     public PracticaEntity() {

@@ -136,6 +136,15 @@ public class PracticaController {
         return new ResponseEntity<List<PracticaModel>>(this.practicaService.findPracticasXUsuario(usuario), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_ENFERMERIA') OR hasRole('ROLE_COORDINACION')")
+    @GetMapping("/listaRecupero/{fechaDesde}/{fechaHasta}")
+    public ResponseEntity<?> findPracticasXRecupero(@PathVariable("fechaDesde")String fechaDesde, @PathVariable("fechaHasta")String fechaHasta) throws Exception{
+
+        logger.info("Listado de recupero de vacunas");
+
+        return new ResponseEntity<List<PracticaModel>>(this.practicaService.findPracticasXRecupero(fechaHasta, fechaHasta), HttpStatus.OK);
+    }
+
 
 
     @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_COORDINACION')")

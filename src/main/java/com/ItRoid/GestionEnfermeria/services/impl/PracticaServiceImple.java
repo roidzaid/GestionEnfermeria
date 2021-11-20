@@ -502,6 +502,53 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
     }
 
     @Override
+    public List<PracticaModel> findPracticasXRecupero(String fechaDesde, String fechaHasta) throws Exception {
+
+        fechaDesde = fechaDesde + " 00:00:00";
+        fechaHasta = fechaHasta + " 23:59:59";
+
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date fechaDesdeFormat = formato.parse(fechaDesde);
+        Date fechaHastaFormat = formato.parse(fechaHasta);
+
+        List<PracticaModel> lista = null;
+
+        List<PracticaEntity> listEntity = this.practicasRepository.findByRecupero("Esq. Atrasado", fechaDesdeFormat, fechaHastaFormat);
+
+        if(listEntity != null) {
+            List<PracticaModel> list = listEntity
+                    .stream()
+                    .map((e) -> new PracticaModel(
+                            e.getIdPractica(),
+                            e.getFecha(),
+                            e.getNombre(),
+                            e.getApellido(),
+                            e.getDni(),
+                            e.getFechaNac(),
+                            e.getSexo(),
+                            e.getObraSocial(),
+                            e.getLocalidad(),
+                            e.getDireccion(),
+                            e.getNombreResponsable(),
+                            e.getApellidoResponsable(),
+                            e.getDniResponsable(),
+                            e.getObservaciones(),
+                            e.getVacuna(),
+                            e.getDosis(),
+                            e.getTipoVacuna(),
+                            e.getLote(),
+                            e.getUsuarioModif(),
+                            e.getEsqAtrasado()))
+                    .collect(Collectors.toList());
+
+            lista = list;
+        }
+
+        return lista;
+
+    }
+
+    @Override
     public void updatePractica(PracticaModel practicasModel) throws Exception {
 
         PracticaEntity p = this.practicasRepository.findByIdPractica(practicasModel.getIdPractica());

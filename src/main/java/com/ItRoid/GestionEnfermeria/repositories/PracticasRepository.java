@@ -114,4 +114,10 @@ public interface PracticasRepository extends JpaRepository<PracticaEntity, Long>
             nativeQuery = true)
     int countByVDMA(String vacuna, String dosis, int edadAños, String anioMes, String EsqAtrasado);
 
+
+    @Query(
+            value = "SELECT * FROM practicas p WHERE p.esq_atrasado = ?1 AND p.fecha >= ?2 AND p.fecha <= ?3 ORDER BY p.id_practica",
+            nativeQuery = true)
+    List<PracticaEntity> findByRecupero(String EsqAtrasado, Date fechaDesde, Date fechaHasta);
+
 }
