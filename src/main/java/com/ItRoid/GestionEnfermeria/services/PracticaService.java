@@ -1,6 +1,9 @@
 package com.ItRoid.GestionEnfermeria.services;
 
 import com.ItRoid.GestionEnfermeria.models.PracticaModel;
+import com.ItRoid.GestionEnfermeria.models.RecuperosModel;
+import com.ItRoid.GestionEnfermeria.models.ResaproModel;
+import com.ItRoid.GestionEnfermeria.models.ResaproModelBD;
 
 import java.util.List;
 
@@ -25,6 +28,10 @@ public interface PracticaService <T>{
     List<PracticaModel> findPracticasXUsuario(String usuario) throws Exception;
 
     List<PracticaModel> findPracticasXRecupero(String fechaDesde, String fechaHasta) throws Exception;
+
+    List<RecuperosModel> findPracticasXRecuperoModel(String fechaDesde, String fechaHasta) throws Exception;
+
+    List<ResaproModel> findResapro(String fechaDesde, String fechaHasta) throws Exception;
 
     void updatePractica(PracticaModel practicasModel) throws Exception;
     void deletePractica(Long idPractica) throws Exception;

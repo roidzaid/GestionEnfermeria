@@ -18,7 +18,7 @@ public class Hoja2ServiceImple implements Hoja2Service<Hoja2Model> {
     public Hoja2Model reporteHoja2(String anioMes) throws Exception {
 
         Hoja2Model hoja2Model = new Hoja2Model(
-                this.practicasRepository.countByLocalidad("Moron", anioMes),
+                this.practicasRepository.countByLocalidad("Morón", anioMes),
                 this.practicasRepository.countByLocalidad("La Matanza", anioMes),
                 this.practicasRepository.countByLocalidad("Merlo", anioMes),
                 this.practicasRepository.countByLocalidad("Otros", anioMes),

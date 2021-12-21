@@ -3,8 +3,10 @@ package com.ItRoid.GestionEnfermeria.controllers;
 import com.ItRoid.GestionEnfermeria.models.Hoja10Model;
 import com.ItRoid.GestionEnfermeria.models.Hoja2Model;
 import com.ItRoid.GestionEnfermeria.models.PracticaModel;
+import com.ItRoid.GestionEnfermeria.models.ResaproModel;
 import com.ItRoid.GestionEnfermeria.services.Hoja10Service;
 import com.ItRoid.GestionEnfermeria.services.Hoja2Service;
+import com.ItRoid.GestionEnfermeria.services.PracticaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
@@ -27,7 +31,7 @@ public class ReportesController {
     private Hoja10Service hoja10Service;
 
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_COORDINACION')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_COORDINACION') OR hasRole('ROLE_ENFERMERIA')")
     @GetMapping("/hoja2/{anioMes}")
     public ResponseEntity<?> hoja2(@PathVariable("anioMes") String anioMes) throws Exception{
 
@@ -36,7 +40,7 @@ public class ReportesController {
         return new ResponseEntity<Hoja2Model>(this.hoja2Service.reporteHoja2(anioMes), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_COORDINACION')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_COORDINACION') OR hasRole('ROLE_ENFERMERIA')")
     @GetMapping("/hoja10/{anioMes}")
     public ResponseEntity<?> hoja10(@PathVariable("anioMes") String anioMes) throws Exception{
 

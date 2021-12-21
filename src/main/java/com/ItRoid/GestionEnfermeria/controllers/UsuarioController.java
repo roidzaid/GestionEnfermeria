@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,7 +32,6 @@ public class UsuarioController {
     @Autowired
     private JwtService jwtService;
 
-
     @GetMapping("/login")
     public String login(@AuthenticationPrincipal User usuario) {
 
@@ -48,7 +46,6 @@ public class UsuarioController {
         return jwtService.createToken(usuario.getUsername(), rolesList);
 
     }
-
 
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -71,7 +68,6 @@ public class UsuarioController {
 
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{usuario}")
     public UsuarioModel findUsuario(@PathVariable("usuario") String usuario) throws Exception{
 

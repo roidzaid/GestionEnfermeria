@@ -63,11 +63,16 @@ public class PacientesController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_COORDINACION')")
     @PutMapping()
-    public void updatePaciente(@RequestBody PacientesModel pacientesModel) throws Exception {
+    public ResponseEntity<?> updatePaciente(@RequestBody PacientesModel pacientesModel) throws Exception {
 
         logger.info("Se modifica el paciente: " + pacientesModel.getDni());
 
-        this.pacientesService.updatePaciente(pacientesModel);
+        try {
+            this.pacientesService.updatePaciente(pacientesModel);
+            return new ResponseEntity<PacientesModel>(pacientesModel, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<PacientesModel>(pacientesModel, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
     }
 

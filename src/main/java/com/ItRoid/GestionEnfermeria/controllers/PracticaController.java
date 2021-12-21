@@ -2,6 +2,7 @@ package com.ItRoid.GestionEnfermeria.controllers;
 
 import com.ItRoid.GestionEnfermeria.models.PacientesModel;
 import com.ItRoid.GestionEnfermeria.models.PracticaModel;
+import com.ItRoid.GestionEnfermeria.models.ResaproModel;
 import com.ItRoid.GestionEnfermeria.services.PracticaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -142,7 +143,16 @@ public class PracticaController {
 
         logger.info("Listado de recupero de vacunas");
 
-        return new ResponseEntity<List<PracticaModel>>(this.practicaService.findPracticasXRecupero(fechaHasta, fechaHasta), HttpStatus.OK);
+        return new ResponseEntity<List<PracticaModel>>(this.practicaService.findPracticasXRecupero(fechaDesde, fechaHasta), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_COORDINACION') OR hasRole('ROLE_ENFERMERIA')")
+    @GetMapping("/resapro/{fechaDesde}/{fechaHasta}")
+    public ResponseEntity<?> resapro(@PathVariable("fechaDesde")String fechaDesde, @PathVariable("fechaHasta")String fechaHasta) throws Exception{
+
+        logger.info("Se consulta Resapro");
+
+        return new ResponseEntity<List<ResaproModel>>(this.practicaService.findResapro(fechaDesde, fechaHasta), HttpStatus.OK);
     }
 
 
