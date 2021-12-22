@@ -16,7 +16,7 @@
 	</queryString>
 	<field name="varon" class="java.lang.String"/>
 	<field name="mujer" class="java.lang.String"/>
-	<field name="edad" class="java.lang.Integer"/>
+	<field name="edad" class="java.lang.String"/>
 	<field name="nacimiento" class="java.lang.String"/>
 	<field name="vacuna" class="java.lang.String"/>
 	<field name="dosis1" class="java.lang.String"/>

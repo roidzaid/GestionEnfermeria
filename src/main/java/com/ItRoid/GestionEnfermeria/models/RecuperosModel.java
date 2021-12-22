@@ -4,7 +4,7 @@ public class RecuperosModel {
 
     private String varon;
     private String mujer;
-    private int edad;
+    private String edad;
     private String nacimiento;
     private String vacuna;
     private String dosis1;
@@ -15,7 +15,7 @@ public class RecuperosModel {
     public RecuperosModel() {
     }
 
-    public RecuperosModel(String varon, String mujer, int edad, String nacimiento, String vacuna, String dosis1, String dosis2, String dosis3, String dosisR) {
+    public RecuperosModel(String varon, String mujer, String edad, String nacimiento, String vacuna, String dosis1, String dosis2, String dosis3, String dosisR) {
         this.varon = varon;
         this.mujer = mujer;
         this.edad = edad;
@@ -43,11 +43,11 @@ public class RecuperosModel {
         this.mujer = mujer;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 

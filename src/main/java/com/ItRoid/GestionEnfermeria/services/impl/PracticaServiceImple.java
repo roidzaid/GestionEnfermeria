@@ -4,7 +4,6 @@ import com.ItRoid.GestionEnfermeria.entities.PracticaEntity;
 import com.ItRoid.GestionEnfermeria.models.PracticaModel;
 import com.ItRoid.GestionEnfermeria.models.RecuperosModel;
 import com.ItRoid.GestionEnfermeria.models.ResaproModel;
-import com.ItRoid.GestionEnfermeria.models.ResaproModelBD;
 import com.ItRoid.GestionEnfermeria.repositories.PracticasRepository;
 import com.ItRoid.GestionEnfermeria.services.PacientesService;
 import com.ItRoid.GestionEnfermeria.services.PracticaService;
@@ -17,7 +16,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -92,6 +90,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                         e.getNombre(),
                         e.getApellido(),
                         e.getDni(),
+                        e.getEdadAños(),
+                        e.getEdadMeses(),
                         e.getFechaNac(),
                         e.getSexo(),
                         e.getObraSocial(),
@@ -125,6 +125,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -173,6 +175,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -215,6 +219,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -257,6 +263,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -305,6 +313,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -345,6 +355,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -393,6 +405,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -439,6 +453,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -486,6 +502,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -533,6 +551,8 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                             e.getNombre(),
                             e.getApellido(),
                             e.getDni(),
+                            e.getEdadAños(),
+                            e.getEdadMeses(),
                             e.getFechaNac(),
                             e.getSexo(),
                             e.getObraSocial(),
@@ -574,7 +594,7 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
 
         for (int i=0;i<listEntity.size();i++) {
 
-            RecuperosModel recuperosModel = new RecuperosModel("", "", 0, "", "", "", "", "", "");
+            RecuperosModel recuperosModel = new RecuperosModel("", "", "", "", "", "", "", "", "");
 
             if (listEntity.get(i).getSexo().equals("masculino")){
                 recuperosModel.setVaron("X");
@@ -591,7 +611,12 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
             LocalDate ahora = LocalDate.now();
 
             Period periodo = Period.between(fechaNac, ahora);*/
-            recuperosModel.setEdad(listEntity.get(i).getEdadAños());
+
+            if(listEntity.get(i).getEdadAños() < 2){
+                recuperosModel.setEdad(listEntity.get(i).getEdadMeses() + "M");
+            }else{
+                recuperosModel.setEdad(listEntity.get(i).getEdadAños() + "A");
+            }
 
             recuperosModel.setNacimiento(listEntity.get(i).getFechaNac());
             recuperosModel.setVacuna(listEntity.get(i).getVacuna());
@@ -680,12 +705,18 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
         int i=0;
         while (lista.size() > i) {
 
-            ResaproModel resaproModel = new ResaproModel("","",0,"","",0,0,"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","");
+            ResaproModel resaproModel = new ResaproModel("","",0,"","",0,"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","");
             int dniAnt = lista.get(i).getDni();
+
+            boolean grabar = false;
 
             while (lista.size() > i && dniAnt == lista.get(i).getDni()) {
 
-                if (lista.get(i).getVacuna() != "" && lista.get(i).getObservaciones() == "") {
+                if (lista.get(i).getVacuna().equals("")){
+
+                }else{
+
+                    grabar = true;
 
                     resaproModel.setNomyApe(lista.get(i).getNombre()+", "+ lista.get(i).getApellido());
                     resaproModel.setDomicilio(lista.get(i).getDireccion());
@@ -700,9 +731,19 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
 
                     resaproModel.setDniResponsable(lista.get(i).getDniResponsable());
 
-                    resaproModel.setSexo(lista.get(i).getSexo());
+                    if(lista.get(i).getSexo().equals("masculino")){
+                        resaproModel.setSexo("M");
+                    }else{
+                        resaproModel.setSexo("F");
+                    }
 
-                    resaproModel.setEdad(lista.get(i).getEdadAños());
+
+                    if (lista.get(i).getEdadAños() < 2){
+                        resaproModel.setEdad(lista.get(i).getEdadMeses() + "M");
+                    }else{
+                        resaproModel.setEdad(lista.get(i).getEdadAños() + "A");
+                    }
+
                     resaproModel.setObraSocial(lista.get(i).getObraSocial());
 
 
@@ -899,7 +940,12 @@ public class PracticaServiceImple implements PracticaService<PracticaModel> {
                 }
                 i++;
             }
-            listaResapro.add(resaproModel);
+
+            if (grabar){
+                listaResapro.add(resaproModel);
+                grabar = false;
+            }
+
 
 
 

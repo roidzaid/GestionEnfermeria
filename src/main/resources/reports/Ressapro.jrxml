@@ -21,7 +21,7 @@
 	<field name="fechaNac" class="java.lang.String"/>
 	<field name="nomyApeResponsable" class="java.lang.String"/>
 	<field name="dniResponsable" class="java.lang.Integer"/>
-	<field name="edad" class="java.lang.Integer"/>
+	<field name="edad" class="java.lang.String"/>
 	<field name="sexo" class="java.lang.String"/>
 	<field name="obraSocial" class="java.lang.String"/>
 	<field name="BCG" class="java.lang.String"/>
@@ -68,24 +68,23 @@
 				</textElement>
 				<text><![CDATA[DIRECCION DE SALUD Y TERRITORIO]]></text>
 			</staticText>
-			<image>
+			<!--<image>
 				<reportElement x="550" y="1" width="192" height="110"/>
 				<imageExpression><![CDATA["src/main/resources/reports/Logo Moron.png"]]></imageExpression>
-			</image>
+			</image>-->
 			<staticText>
 				<reportElement style="Title" x="0" y="63" width="160" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[PLANILLA DE REGISTRO			
-]]></text>
+				<text><![CDATA[PLANILLA DE REGISTRO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Title" x="180" y="63" width="310" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[ESTABLECIMIENTO: CAPS AZUCENA VILLAFLOR					]]></text>
+				<text><![CDATA[ESTABLECIMIENTO: CAPS AZUCENA VILLAFLOR]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Title" x="0" y="86" width="40" height="20"/>
@@ -232,7 +231,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[EDAD ]]></text>
+				<text><![CDATA[EDAD]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="301" y="10" width="43" height="42"/>
@@ -329,7 +328,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[ROTA  VIRUS]]></text>
+				<text><![CDATA[ROTA VIRUS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="526" y="10" width="40" height="21">

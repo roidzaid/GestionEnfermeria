@@ -3,7 +3,6 @@ package com.ItRoid.GestionEnfermeria.services;
 import com.ItRoid.GestionEnfermeria.models.PracticaModel;
 import com.ItRoid.GestionEnfermeria.models.RecuperosModel;
 import com.ItRoid.GestionEnfermeria.models.ResaproModel;
-import com.ItRoid.GestionEnfermeria.models.ResaproModelBD;
 
 import java.util.List;
 

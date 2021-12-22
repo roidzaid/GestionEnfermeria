@@ -1,7 +1,6 @@
 package com.ItRoid.GestionEnfermeria.repositories;
 
 import com.ItRoid.GestionEnfermeria.entities.PracticaEntity;
-import com.ItRoid.GestionEnfermeria.models.ResaproModelBD;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

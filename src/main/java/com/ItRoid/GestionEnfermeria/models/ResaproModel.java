@@ -9,7 +9,7 @@ public class ResaproModel {
     private String fechaNac;
     private String nomyApeResponsable;
     private int dniResponsable;
-    private int edad;
+    private String edad;
     private String sexo;
     private String obraSocial;
 
@@ -65,7 +65,7 @@ public class ResaproModel {
     public ResaproModel() {
     }
 
-    public ResaproModel(String nomyApe, String domicilio, int dni, String fechaNac, String nomyApeResponsable, int dniResponsable, int edad, String sexo, String obraSocial, String BCG, String hep_B_1, String hep_B_2, String hep_B_3, String VCN_13_1, String VCN_13_2, String VCN_13_3, String pentavalente_1, String pentavalente_2, String pentavalente_3, String SALK_IPV_1, String SALK_IPV_2, String SALK_IPV_3, String SALK_IPV_R, String rotavirus_1, String rotavirus_2, String meningococo_1, String meningococo_2, String meningococo_3, String meningococo_R, String antigripal, String triple_Viral_1, String triple_Viral_2, String hep_A, String varicela, String DTP_Hib, String DTP, String DTP_Ac, String HPV_1, String HPV_2, String DT, String SR) {
+    public ResaproModel(String nomyApe, String domicilio, int dni, String fechaNac, String nomyApeResponsable, int dniResponsable, String edad, String sexo, String obraSocial, String BCG, String hep_B_1, String hep_B_2, String hep_B_3, String VCN_13_1, String VCN_13_2, String VCN_13_3, String pentavalente_1, String pentavalente_2, String pentavalente_3, String SALK_IPV_1, String SALK_IPV_2, String SALK_IPV_3, String SALK_IPV_R, String rotavirus_1, String rotavirus_2, String meningococo_1, String meningococo_2, String meningococo_3, String meningococo_R, String antigripal, String triple_Viral_1, String triple_Viral_2, String hep_A, String varicela, String DTP_Hib, String DTP, String DTP_Ac, String HPV_1, String HPV_2, String DT, String SR) {
         this.nomyApe = nomyApe;
         this.domicilio = domicilio;
         this.dni = dni;
@@ -149,11 +149,11 @@ public class ResaproModel {
         this.dniResponsable = dniResponsable;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 

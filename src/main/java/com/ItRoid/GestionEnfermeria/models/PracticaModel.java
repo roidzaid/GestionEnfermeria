@@ -9,6 +9,8 @@ public class PracticaModel {
     private String nombre;
     private String apellido;
     private int dni;
+    private int edadAños;
+    private int edadMeses;
     private String fechaNac;
     private String sexo;
     private String obraSocial;
@@ -29,12 +31,14 @@ public class PracticaModel {
     public PracticaModel() {
     }
 
-    public PracticaModel(Long idPractica, Date fecha, String nombre, String apellido, int dni, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote, String usuarioModif, String esqAtrasado) {
+    public PracticaModel(Long idPractica, Date fecha, String nombre, String apellido, int dni, int edadAños, int edadMeses, String fechaNac, String sexo, String obraSocial, String localidad, String direccion, String nombreResponsable, String apellidoResponsable, int dniResponsable, String observaciones, String vacuna, String dosis, String tipoVacuna, String lote, String usuarioModif, String esqAtrasado) {
         this.idPractica = idPractica;
         this.fecha = fecha;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        this.edadAños = edadAños;
+        this.edadMeses = edadMeses;
         this.fechaNac = fechaNac;
         this.sexo = sexo;
         this.obraSocial = obraSocial;
@@ -210,5 +214,21 @@ public class PracticaModel {
 
     public void setEsqAtrasado(String esqAtrasado) {
         this.esqAtrasado = esqAtrasado;
+    }
+
+    public int getEdadAños() {
+        return edadAños;
+    }
+
+    public void setEdadAños(int edadAños) {
+        this.edadAños = edadAños;
+    }
+
+    public int getEdadMeses() {
+        return edadMeses;
+    }
+
+    public void setEdadMeses(int edadMeses) {
+        this.edadMeses = edadMeses;
     }
 }
